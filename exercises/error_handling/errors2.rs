@@ -6,7 +6,7 @@
 // the `total_cost` function will calculate the total cost of the tokens. Since
 // the player typed in the quantity, though, we get it as a string-- and they
 // might have typed anything, not just numbers!
-//
+// 一个东西花费5个token 每次交易会花费1个token 
 // Right now, this function isn't handling the error case at all (and isn't
 // handling the success case properly either). What we want to do is: if we call
 // the `parse` function on a string that is not a number, that function will
@@ -19,14 +19,15 @@
 // Execute `rustlings hint errors2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
 
 use std::num::ParseIntError;
 
 pub fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
     let processing_fee = 1;
     let cost_per_item = 5;
-    let qty = item_quantity.parse::<i32>();
+    // .expect("invalid digit found in string")
+    let qty = item_quantity.parse::<i32>()?;
 
     Ok(qty * cost_per_item + processing_fee)
 }
@@ -43,6 +44,7 @@ mod tests {
     #[test]
     fn item_quantity_is_an_invalid_number() {
         assert_eq!(
+            //如果是字符
             total_cost("beep boop").unwrap_err().to_string(),
             "invalid digit found in string"
         );
