@@ -3,18 +3,21 @@
 // Execute `rustlings hint macros4` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
-#[rustfmt::skip]
+
+// #[rustfmt::skip]
+#[macro_export]
 macro_rules! my_macro {
     () => {
         println!("Check out my macro!");
-    }
+    };
     ($val:expr) => {
         println!("Look at this other macro: {}", $val);
     }
 }
+mod macros{
 
+}
 fn main() {
     my_macro!();
     my_macro!(7777);

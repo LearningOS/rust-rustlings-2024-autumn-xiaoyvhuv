@@ -44,17 +44,20 @@ pub fn divide(a: i32, b: i32) -> Result<i32, DivisionError> {
 // Complete the function and return a value of the correct type so the test
 // passes.
 // Desired output: Ok([1, 11, 1426, 3])
-fn result_with_list() -> () {
+// 返回值类型应该是Result<Vec<i32>, ()>
+fn result_with_list() -> Result<Vec<i32>, ()> {
     let numbers = vec![27, 297, 38502, 81];
     let division_results = numbers.into_iter()
-    .map(|n| divide(n, 27).ok()).collect();
-    division_results
+        .filter_map(|n| divide(n, 27).ok()) // 使用filter_map来过滤掉错误的情况
+        .collect::<Vec<i32>>();
+    Ok(division_results)
 }
 
 // Complete the function and return a value of the correct type so the test
 // passes.
 // Desired output: [Ok(1), Ok(11), Ok(1426), Ok(3)]
-fn list_of_results() -> () {
+// 返回值类型应该是Vec<Result<i32, DivisionError>>
+fn list_of_results() -> Vec<Result<i32, DivisionError>> {
     let numbers = vec![27, 297, 38502, 81];
     let division_results = numbers.into_iter().map(|n| divide(n, 27)).collect();
     division_results

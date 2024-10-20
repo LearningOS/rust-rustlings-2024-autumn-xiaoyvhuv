@@ -10,11 +10,11 @@
 // Execute `rustlings hint using_as` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
+//vlaue.len() 返回的是usize 类型 但是函数的返回值规定的为 f64 类型
 fn average(values: &[f64]) -> f64 {
     let total = values.iter().sum::<f64>();
-    total / values.len()
+    total / values.len()as f64
 }
 
 fn main() {
