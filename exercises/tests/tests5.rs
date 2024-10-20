@@ -1,6 +1,6 @@
 // tests5.rs
 //
-// An `unsafe` in Rust serves as a contract.
+// An `unsafe` in Rust serves as a contract.  
 //
 // When `unsafe` is marked on an item declaration, such as a function,
 // a trait or so on, it declares a contract alongside it. However,
@@ -22,17 +22,21 @@
 // Execute `rustlings hint tests5` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
-/// # Safety
+
 ///
 /// The `address` must contain a mutable reference to a valid `u32` value.
+/// 
+// #Safety
 unsafe fn modify_by_address(address: usize) {
     // TODO: Fill your safety notice of the code block below to match your
     // code's behavior and the contract of this function. You may use the
     // comment of the test below as your format reference.
+
     unsafe {
-        todo!("Your code goes here")
+
+        let addr_of_t: *mut u32 = address as *mut u32;
+        *addr_of_t = 0xAABBCCDD;
     }
 }
 
